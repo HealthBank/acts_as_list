@@ -11,6 +11,10 @@ module ActiveRecord::Acts::List::ScopeMethodDefiner #:nodoc:
         scope
       end
 
+      define_method :scope_strategy do
+        :where
+      end
+
       if scope.is_a?(Symbol)
         define_method :scope_condition do
           { scope => send(:"#{scope}") }

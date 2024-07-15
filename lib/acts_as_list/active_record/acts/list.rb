@@ -226,7 +226,7 @@ module ActiveRecord
         end
 
         def acts_as_list_list
-          acts_as_list_class.default_scoped.unscope(:select, :where).where(scope_condition)
+          acts_as_list_class.default_scoped.unscope(:select, :where).send(scope_strategy, scope_condition)
         end
 
         def avoid_collision
